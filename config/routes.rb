@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  root "public/sweets#top"
+
   devise_for :admins, controllers:{
   	sessions: 'admins/sessions',
   	wasswords: 'admins/passwords',
@@ -10,8 +13,6 @@ Rails.application.routes.draw do
   	passwords: 'customers/passwords',
   	registrations: 'customers/registrations'
   }
-
-  root "public/sweets#top"
 
   namespace :admin do
     resources :sweets, only:[:index, :new, :create, :show, :edit, :update]
