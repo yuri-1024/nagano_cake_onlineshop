@@ -4,9 +4,13 @@ class Admin::SweetsController < ApplicationController
 	end
 
 	def new
+		@sweet = Sweet.new
 	end
 
 	def create
+		@sweet = Sweet.new(sweet_params)
+		@sweet.save
+		redirect_to root_path
 	end
 
 	def show
@@ -16,6 +20,12 @@ class Admin::SweetsController < ApplicationController
 	end
 
 	def update
+	end
+
+	private
+	def sweet_params
+		params.require(:sweet).permit(:name, :introduction, :price, :genre)
+		
 	end
 
 
