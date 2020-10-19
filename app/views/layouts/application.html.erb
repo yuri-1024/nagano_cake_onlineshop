@@ -7,9 +7,58 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="footer.css" rel="stylesheet">
   </head>
 
   <body>
+    <header>
+      <nav class="navbar navbar-inverse">
+        <nav class='navbar-left navbar-brand'>
+          <span><h4>LOGO</h4></span>
+        </nav>
+
+        <div class="nav navbar-nav navbar-right">
+          　<% if customer_signed_in? %>
+                <li class="nav-item">
+                  ようこそXXXさん！
+                </li>
+                <li class="nav-item">
+                  マイページ
+                </li>
+                <li class="nav-item">
+                  商品一覧
+                </li>
+                <li class="nav-item">
+                  カート
+                </li>
+                <li class="nav-item">
+                  ログアウト
+                </li>
+                <% else %>
+                <li class="nav-item">
+                  About
+                </li>
+                <li class="nav-item">
+                  商品一覧
+                </li>
+                <li class="nav-item">
+                  新規登録
+                </li>
+                <li class="nav-item">
+                  ログイン
+                </li>
+            <% end %>
+       </div>
+      </nav>
+    </header>
+
     <%= yield %>
+    <br><br><br><br>
+
+    <footer class="footer">
+      <div class="container">
+        <p class="text-muted"></p>
+      </div>
+    </footer>
   </body>
 </html>
