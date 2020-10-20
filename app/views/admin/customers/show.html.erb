@@ -1,0 +1,27 @@
+<h4><%= @customer.name_family %><%= @customer.name_first %>さんの会員詳細</h4>
+
+<p>顧客ID</p>
+<%= @customer.id %>
+<p>氏名</p>
+<%= @customer.name_family %><%= @customer.name_first %>
+<p>フリガナ</p>
+<%= @customer.name_family_kana %><%= @customer.name_first_kana %>
+<p>郵便番号</p>
+<%= @customer.postal_code %>
+<p>住所</p>
+<%= @customer.address %>
+<p>電話番号</p>
+<%= @customer.tel %>
+<p>メールアドレス</p>
+<%= @customer.email %>
+
+
+<br>
+<br>
+
+<%= link_to(edit_admin_customer_path(@customer)) do %>
+<%= button_tag( class: 'btn btn-primary' ) do %>
+編集する
+<% end %>
+<% end %>　
+注文履歴一覧をみる
