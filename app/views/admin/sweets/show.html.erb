@@ -4,6 +4,12 @@
 
 <p>商品名<%= @sweet.name %></p>
 <p>商品説明<%= @sweet.introduction %></p>
-<p>ジャンル</p>
+<p>ジャンル<%= @sweet.genre_id %></p>
 <p>税込み価格（税抜き価格)  ( <%= @sweet.price %> )円 </p>
 <p>販売ステータス<%= @sweet.is_soldout %></p>
+
+<%= link_to(edit_admin_sweet_path(@sweet)) do %>
+<%= button_tag( class: 'btn btn-primary' ) do %>
+編集する
+<% end %>
+<% end %>
