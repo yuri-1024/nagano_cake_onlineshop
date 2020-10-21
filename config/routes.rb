@@ -20,10 +20,11 @@ Rails.application.routes.draw do
     resources :customers, only:[:index, :show, :edit, :update]
   end
 
-  namespace :public do
+  scope module: :public do
     resources :sweets, only:[:index, :show]
-    get 'public/sweets/top' => 'public/sweets#top'
-    get 'public/sweets/genre' => 'public/sweets#genre'
+    get 'sweets/top' => 'public/sweets#top'
+    get 'sweets/genre' => 'public/sweets#genre'
+    get 'sweets/about' => 'public/sweets#about'
   end
 
 

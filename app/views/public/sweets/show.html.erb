@@ -19,13 +19,17 @@
 			</table>
 		</div>
 		<div class="col-lg-9">
-			<div>
-				<p>ようこそ、NaganoCakeへ！</p>
-				<p>このサイトは、ケーキ販売のECサイトになります。</p>
-				<p>会員でない方も商品の閲覧はできますが、</p>
-				<p>購入には会員登録が必要になります。</p>
-		    </div>
-		    <h2>オススメ商品</h2>
-		    <p>もっと見る</p>
-
+			<div class="row">
+				<div class="col-md-6">
+					image
+				</div>
+				<div class="col-md-6">
+					<h2><%= @sweet.name %></h2>
+					<p><%= @sweet.introduction %></p>
+					<p><%= @sweet.price %></p>
+				</div>
+				個数選択　カートに入れる
+			</div>
 		</div>
+	</div>
+</div>
