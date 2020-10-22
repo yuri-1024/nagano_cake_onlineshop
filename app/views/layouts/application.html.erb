@@ -18,34 +18,57 @@
         </nav>
 
         <div class="nav navbar-nav navbar-right">
+            <li class="nav-item">
+                  <%= link_to(new_admin_session_path) do %>
+                    管理者login
+                  <% end %>
+            </li>
+            <li class="nav-item">
+                  <%= link_to destroy_admin_session_path, :method => :delete do %>
+                  管理者ログアウト
+                  <% end %>
+            </li>
+
           　<% if customer_signed_in? %>
-                <li class="nav-item">
-                  ようこそXXXさん！
+                <li class="nav-item" style="color:#fff">
+                  ようこそ<%= current_customer.name_family %><%= current_customer.name_first %>さん！
                 </li>
                 <li class="nav-item">
                   マイページ
                 </li>
                 <li class="nav-item">
-                  商品一覧
+                  <%= link_to(sweets_path) do %>
+                    商品一覧
+                  <% end %>
                 </li>
                 <li class="nav-item">
                   カート
                 </li>
                 <li class="nav-item">
+                  <%= link_to destroy_customer_session_path, :method => :delete do %>
                   ログアウト
+                  <% end %>
                 </li>
                 <% else %>
                 <li class="nav-item">
-                  About
+                  <%= link_to(about_path) do %>
+                    About
+                  <% end %>
                 </li>
                 <li class="nav-item">
-                  商品一覧
+                  <%= link_to(sweets_path) do %>
+                    商品一覧
+                  <% end %>
                 </li>
                 <li class="nav-item">
-                  新規登録
+                  <%= link_to(new_customer_registration_path) do %>
+                    新規登録
+                  <% end %>
                 </li>
                 <li class="nav-item">
-                  ログイン
+                  <%= link_to(new_customer_session_path) do %>
+                    ログイン
+                  <% end %>
                 </li>
             <% end %>
        </div>

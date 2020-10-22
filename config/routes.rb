@@ -24,7 +24,11 @@ Rails.application.routes.draw do
     resources :sweets, only:[:index, :show]
     get 'sweets/top' => 'public/sweets#top'
     get 'sweets/genre' => 'public/sweets#genre'
-    get 'sweets/about' => 'public/sweets#about'
+    get 'about' => 'sweets#about'
+    resources :customers, only:[:show, :edit, :update]
+    get 'unsubscribe' => 'customers#unsubscribe'
+    patch 'withdraw' => 'customers#withdraw'
+
   end
 
 
