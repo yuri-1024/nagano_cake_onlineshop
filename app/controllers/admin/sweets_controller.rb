@@ -1,7 +1,7 @@
 class Admin::SweetsController < ApplicationController
 
 	def index
-		@sweet = Sweet.all
+		@sweets = Sweet.all
 
 	end
 
@@ -12,11 +12,12 @@ class Admin::SweetsController < ApplicationController
 	def create
 		@sweet = Sweet.new(sweet_params)
 		@sweet.save
-		redirect_to admin_sweet_path(@sweet.id)
+		redirect_to admin_sweets_path
 	end
 
 	def show
 		@sweet = Sweet.find(params[:id])
+		@genre = Genre.find(@sweet.id)
 	end
 
 	def edit
@@ -31,7 +32,7 @@ class Admin::SweetsController < ApplicationController
 
 	private
 	def sweet_params
-		params.require(:sweet).permit(:name, :introduction, :price, :genre, :is_soldout)
+		params.require(:sweet).permit(:image, :name, :introduction, :genre_id, :price, :is_soldout)
 		
 	end
 

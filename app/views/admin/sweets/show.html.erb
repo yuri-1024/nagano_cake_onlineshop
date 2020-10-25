@@ -1,10 +1,11 @@
 <h4>商品詳細</h4>
 
 <p>写真</p>
-
+<p>画像</p>
+  <%= attachment_image_tag @sweet, :image, :fill, 200, 200, format: 'jpeg' %>
 <p>商品名<%= @sweet.name %></p>
 <p>商品説明<%= @sweet.introduction %></p>
-<p>ジャンル<%= @sweet.genre_id %></p>
+<p>ジャンル<%= @genre.name %></p>
 <p>税込み価格（税抜き価格)  ( <%= @sweet.price %> )円 </p>
 <p>販売ステータス<%= @sweet.is_soldout %></p>
 

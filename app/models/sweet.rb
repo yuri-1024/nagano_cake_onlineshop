@@ -1,3 +1,4 @@
 class Sweet < ApplicationRecord
-	belongs_to :genre
+	belongs_to :genres, optional: true
+	attachment :image
 end

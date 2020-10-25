@@ -5,8 +5,8 @@ class CreateSweets < ActiveRecord::Migration[5.2]
       t.text :introduction,   null: false
       t.integer :price,       null: false
       t.boolean :is_soldout,  null: false, default: "false"
-      t.integer :genre_id
-      t.string :image_id
+      t.integer :genre_id,    null: false
+      t.string :image_id,     null: false
 
       t.timestamps
     end
