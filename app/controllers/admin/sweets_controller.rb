@@ -33,7 +33,6 @@ class Admin::SweetsController < ApplicationController
 	private
 	def sweet_params
 		params.require(:sweet).permit(:image, :name, :introduction, :genre_id, :price, :is_soldout)
-		
 	end
 
 

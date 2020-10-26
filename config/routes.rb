@@ -22,14 +22,14 @@ Rails.application.routes.draw do
 
   scope module: :public do
     resources :sweets, only:[:index, :show]
-    get 'sweets/top' => 'public/sweets#top'
-    get 'sweets/genre' => 'public/sweets#genre'
+    get 'genre' => 'sweets#genre'
     get 'about' => 'sweets#about'
     resources :customers, only:[:show, :edit, :update]
     get 'unsubscribe' => 'customers#unsubscribe'
     patch 'withdraw' => 'customers#withdraw'
     resources :deliveries, only:[:index, :edit, :create, :update, :destroy]
-
+    resources :carts, only:[:index, :update, :destroy, :create]
+    delete 'destroy_all' => 'carts#destroy_all'
   end
 
 

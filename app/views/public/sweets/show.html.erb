@@ -28,7 +28,17 @@
 					<p><%= @sweet.introduction %></p>
 					<p><%= @sweet.price %></p>
 				</div>
-				個数選択　カートに入れる
+
+				<%= form_for(@cart, url:carts_path) do |f| %>
+				<div class="form-group">
+				<%= f.select :amount, {'1': 1, '2': 2, '3': 3, '4': 4, '5': 5}, { include_blank: '個数を選択'}, { class: 'form-control' , required: true } %>
+				<%= f.hidden_field :sweet_id, :value => @sweet.id %>
+			    </div>
+				<div class="form-group">
+				<%= f.submit 'カートに入れる', class: 'btn btn-primary btn-sm' %>
+				</div>
+				<% end %>
+
 			</div>
 		</div>
 	</div>

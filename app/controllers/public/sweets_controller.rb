@@ -15,17 +15,16 @@ class Public::SweetsController < ApplicationController
 	def show
 		@genre = Genre.all
 		@sweet = Sweet.find(params[:id])
+		@cart = Cart.new
 	end
 
 	def genre
-		
 	end
 
 	private
 
 	def sweet_params
 		params.require(:sweet).permit(:name, :introduction, :price, :genre, :is_soldout)
-		
 	end
 
 	def genre_params

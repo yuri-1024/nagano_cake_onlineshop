@@ -1,0 +1,60 @@
+
+
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12">
+			<h4>ショッピングカート</h4>
+			<%= link_to "カートを空にする", destroy_all_path(@carts), method: :delete, class: "btn btn-danger" %>
+			<table>
+				<thead>
+					<tr>
+						<th>商品名</th>
+						<th>単価</th>
+						<th>数量</th>
+						<th>小計</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @sum = 0 %>
+					<% @carts.each do |cart| %>
+					<tr>
+						<td>
+							image <%= cart.sweet.name %>
+						</td>
+						<td> <%= cart.sweet.price %> </td>
+						<td>
+							<%= form_for (cart) do |f| %>
+								<%= f.number_field :amount %>
+								<%= f.submit '変更', class: 'btn btn-primary btn-xs'%>
+							<% end %>
+						</td>
+						<td>
+							<% sub_total = cart.sweet.price * cart.amount %>
+							<% @sum += sub_total %>
+							<%= sub_total %>
+						</td>
+						<td>
+							<%= link_to "削除する", cart_path(cart), method: :delete, class: "btn btn-danger btn-xs" %>
+						</td>
+					</tr>
+					<% end %>
+
+				</tbody>
+			</table>
+
+			<%= link_to "買い物を続ける", sweets_path, class: "btn btn-primary" %>
+			<table>
+				<tr>
+					<th>合計金額</th>
+					<td>
+						<%= @sum %>
+					</td>
+				</tr>
+			</table>
+			<%= button_tag( class: 'btn btn-success' ) do %>
+			情報入力に進む
+			<% end %>
+		</div>
+	</div>
+</div>
