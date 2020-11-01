@@ -18,6 +18,10 @@ Rails.application.routes.draw do
     resources :sweets, only:[:index, :new, :create, :show, :edit, :update]
     resources :genres, only:[:index, :create, :edit, :update]
     resources :customers, only:[:index, :show, :edit, :update]
+    resources :orders, only:[:index, :show, :update]
+    get 'today' => 'orders#today'
+    resources :order_lists, only:[:update]
+    resources :top, only:[:index]
   end
 
   scope module: :public do

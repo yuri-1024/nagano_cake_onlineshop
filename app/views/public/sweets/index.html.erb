@@ -29,7 +29,7 @@
 						<tr>
 							<td>
 								<%= link_to(sweet_path(sweet.id)) do %>
-							     image
+							     <%= attachment_image_tag sweet, :image, :fill, 150, 150, format: 'jpeg' %>
 							     <% end %>
 						    </td>
 						</tr>

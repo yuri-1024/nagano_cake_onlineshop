@@ -23,10 +23,31 @@ class Public::OrdersController < ApplicationController
 
 
 	def create
-		@order = Order.new
-		@order.save
+		@order = Order.new(order_params)
+		@order.save!
+
+		@carts = current_customer.carts.all
+		  @carts.each do |cart|
+		  	@order_list = OrderList.new(order_list_params)
+		  	@order_list.sweet_id = cart.sweet.id
+		  	@order_list.order_id = @order.id
+		  	@order_list.price = (cart.sweet.price * 1.1).floor
+		  	@order_list.amount = cart.amount
+		  	@order_list.save
+		  end
+		@carts.destroy_all
 		redirect_to complete_path
-	
+	end
+
+	private
+
+	def order_params
+		params.require(:order).permit(:customer_id, :postal_code, :address, :name, :cost, :charge, :payment, :status)
+		
+	end
+
+	def order_list_params
+		
 	end
 
 

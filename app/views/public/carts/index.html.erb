@@ -20,7 +20,7 @@
 					<% @carts.each do |cart| %>
 					<tr>
 						<td>
-							image <%= cart.sweet.name %>
+							<%= attachment_image_tag cart.sweet, :image, :fill, 50, 50, format: 'jpeg' %> <%= cart.sweet.name %>
 						</td>
 						<td> <%= cart.sweet.price %> </td>
 						<td>
@@ -52,9 +52,7 @@
 					</td>
 				</tr>
 			</table>
-			<%= button_tag( class: 'btn btn-success' ) do %>
-			情報入力に進む
-			<% end %>
+		<%= link_to "情報入力に進む", new_order_path, class: "btn btn-danger" %>
 		</div>
 	</div>
 </div>

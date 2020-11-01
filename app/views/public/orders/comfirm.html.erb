@@ -1,6 +1,6 @@
 <h4>注文情報確認</h4>
 <% @sum = 0 %>
-<% @carts.each do |cart| %>
+
 <table>
 	<thead>
 		<tr>
@@ -11,8 +11,9 @@
 		</tr>
 	</thead>
 	<tbody>
+		<% @carts.each do |cart| %>
 		<tr>
-			<td><%= cart.sweet.name %></td>
+			<td><%= attachment_image_tag cart.sweet, :image, :fill, 50, 50, format: 'jpeg' %><%= cart.sweet.name %></td>
 			<td><%= (cart.sweet.price.to_i * 1.1).floor %>円</td>
 			<td><%= cart.amount %>個</td>
 			<td>
@@ -21,9 +22,10 @@
 				<%= (sub_total * 1.1).floor %>円
 			</td>
 		</tr>
+		<% end %>
 	</tbody>
 </table>
-<% end %>
+
 
 <table>
 	<tr>
@@ -43,14 +45,13 @@
 <h5><strong>お届け先</strong><%= @order.postal_code %><%= @order.address %><%= @order.name %></h5>
 
 <%= form_with model: @order, url: orders_path, method: :post, local: true do |f| %>
-	<%= f.hidden_field :customer_id, :value => @customer.id %>
+	<%= f.hidden_field :customer_id, :value => current_customer.id %>
 	<%= f.hidden_field :postal_code, :value => @order.postal_code %>
 	<%= f.hidden_field :address, :value => @order.address %>
 	<%= f.hidden_field :name, :value => @order.name %>
 	<%= f.hidden_field :cost, :value => 800 %>
 	<%= f.hidden_field :charge, :value => (@sum * 1.1).floor + 800 %>
-	<%= f.hidden_field :pament, :value => @order.payment %>
-	<%= f.hidden_field :status, :value => 0 %>
+	<%= f.hidden_field :payment, :value => @order.payment %>
 	<div class="actions">
 		<%= f.submit '購入を確定する', class: 'btn btn-succsess' %>
 	</div>
