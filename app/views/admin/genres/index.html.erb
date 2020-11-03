@@ -1,15 +1,17 @@
 <div class="container">
 	<div class="row">
-		<div class="col-lg-9">
+		<div class="col-lg-8 col-lg-offset-2">
 		<h4>ジャンル一覧・追加</h4>
 			<%= form_for(@genre, url: admin_genres_path) do |f| %>
 			<label>ジャンル</label>
 			<%= f.text_field :name %>
 			 <label><%= f.radio_button :is_active, true %>有効</label>
 			<label><%= f.radio_button :is_active, false %>無効</label>
-			<%= f.submit '追加', class: 'btn btn-primary btn-sm' %>
+			<%= f.submit '追加', class: 'btn btn-info btn-sm' %>
 			<% end %>
 
+			<br>
+			<br>
 
 			<table class="table table-hover">
 				<thead>
@@ -26,7 +28,7 @@
 						<td><%= genre.is_active %></td>
 						<td>
 							<%= link_to(edit_admin_genre_path(genre)) do %>
-							<%= button_tag( class: 'btn btn-primary' ) do %>
+							<%= button_tag( class: 'btn btn-info' ) do %>
 							編集する
 							<% end %>
 							<% end %>

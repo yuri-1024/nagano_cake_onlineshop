@@ -1,5 +1,11 @@
 class Public::OrdersController < ApplicationController
 
+	def index
+		@path = Rails.application.routes.recognize_path(request.referer)
+		@customer = Customer.find(@path[:id])
+		@orders = @customer.orders
+	end
+
 	def new
 		@order = Order.new
 	end

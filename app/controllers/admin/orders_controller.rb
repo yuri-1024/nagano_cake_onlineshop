@@ -21,10 +21,16 @@ class Admin::OrdersController < ApplicationController
 	def show
 		@order = Order.find(params[:id])
 		@order_lists = @order.order_lists
+
+
 	end
 
-	def today
-		@orders = Order.where(created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)
+	def update
+		@order = Order.find(params[:id])
+
+
+
+
 	end
 
 	private

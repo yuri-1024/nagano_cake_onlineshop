@@ -17,7 +17,7 @@ class Admin::SweetsController < ApplicationController
 
 	def show
 		@sweet = Sweet.find(params[:id])
-		@genre = Genre.find(@sweet.id)
+		@genre = @sweet.genre
 	end
 
 	def edit

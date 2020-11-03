@@ -1,19 +1,19 @@
 <div class="container">
 	<div class="row">
 		<div class="col-lg-3">
-			<table>
+			<table class="table table-bordered">
 				<thead>
 					<tr>
 						<th>ジャンル検索</th>
 					</tr>
 				</thead>
 				<tbody>
-					<% @genre.each do |genre| %>
+					<% @genres.each do |genre| %>
 					<tr>
 						<td>
-							<!-- link_to  -->
+							<%= link_to(sweets_path(genre_sort:genre.id)) do %>
 							<%= genre.name %>
-							<!-- end -->
+							<% end %>
 						</td>
 					</tr>
 					<% end %>
@@ -21,11 +21,11 @@
 			</table>
 		</div>
 		<div class="col-lg-9">
-			<h2>商品一覧</h2>
-			<% @sweet.each do |sweet| %>
-				<table>
+		  <div class="row">
+			<h2><%= @sweet_index_title %></h2>
+			<% @sweets.each do |sweet| %>
+				<table class="col-xs-3">
 					<tbody>
-
 						<tr>
 							<td>
 								<%= link_to(sweet_path(sweet.id)) do %>
@@ -42,6 +42,7 @@
 					</tbody>
 				</table>
 			<% end %>
-		</div>
+		  </div>
+	    </div>
 	</div>
 </div>
