@@ -36,7 +36,8 @@
           </div>
           <div class="form-group">
             <label class="col-sm-2 control-label">会員ステータス</label>
-            有効　退会済み
+            <label><%= f.radio_button :is_deleted, false %>会員</label>
+            <label><%= f.radio_button :is_deleted, true %>退会済み</label>
           </div>
 
           <div class="actions">

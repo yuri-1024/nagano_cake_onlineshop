@@ -14,8 +14,17 @@
     <header>
       <nav class="navbar navbar-inverse">
         <nav class='navbar-left navbar-brand'>
-          <span><h4>LOGO</h4></span>
+          <span><%= image_tag 'logo.png', size: '200x40' %></span>
         </nav>
+
+          <% if customer_signed_in? %>
+          <nav class='navbar-left navbar-brand' style="color:#fff">
+              ようこそ<%= current_customer.name_family %><%= current_customer.name_first %>さん！
+          </nav>
+          <% end %>
+
+
+
 
         
 
@@ -32,11 +41,9 @@
 
           　<% if customer_signed_in? %>
 
-                <li class="nav-item" style="color:#fff">
-                  ようこそ<%= current_customer.name_family %><%= current_customer.name_first %>さん！
-                </li>
+                
                 <li class="nav-item">
-                  <%= link_to(customer_path(current_customer.id)) do %>
+                  <%= link_to(customers_path) do %>
                   <%= button_tag( class: 'btn btn-link' ) do %>
                     マイページ
                   <% end %>
@@ -95,9 +102,9 @@
                 </li>
                 <li class="nav-item">
                   <%= link_to destroy_admin_session_path, :method => :delete do %>
-                  <%= button_tag( class: 'btn btn-link' ) do %>
-                  管理者ログアウト
-                  <% end %>
+                    <%= button_tag( class: 'btn btn-link' ) do %>
+                  ログアウト
+                    <% end %>
                   <% end %>
                 </li>
 

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   devise_for :admins, controllers:{
   	sessions: 'admins/sessions',
-  	wasswords: 'admins/passwords',
+  	passwords: 'admins/passwords',
   	registrations: 'admins/registrations'
   }
 
@@ -27,7 +27,10 @@ Rails.application.routes.draw do
     resources :sweets, only:[:index, :show]
     get 'genre' => 'sweets#genre'
     get 'about' => 'sweets#about'
-    resources :customers, only:[:show, :edit, :update]
+
+    resource :customers, only:[:show]
+    get 'profile_edit' => 'customers#edit'
+    patch 'profile_update' => 'customers#update'
     get 'unsubscribe' => 'customers#unsubscribe'
     patch 'withdraw' => 'customers#withdraw'
     resources :deliveries, only:[:index, :edit, :create, :update, :destroy]

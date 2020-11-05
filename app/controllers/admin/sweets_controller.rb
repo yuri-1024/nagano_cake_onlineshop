@@ -1,5 +1,7 @@
 class Admin::SweetsController < ApplicationController
 
+	before_action :authenticate_admin!
+
 	def index
 		@sweets = Sweet.all
 

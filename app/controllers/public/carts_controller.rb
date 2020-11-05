@@ -1,5 +1,7 @@
 class Public::CartsController < ApplicationController
 
+	before_action :authenticate_customer!
+
 	def create
 		@cart = Cart.new(cart_params)
 		@cart.customer_id =current_customer.id

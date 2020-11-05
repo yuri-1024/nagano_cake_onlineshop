@@ -31,7 +31,8 @@
 					<p>￥<%= (@sweet.price * 1.1).floor %>（税込）</p>
 				</div>
 
-				<% if customer_signed_in? %>
+
+				<% if customer_signed_in? && @sweet.is_soldout == "販売中" %>
 
 				<%= form_for(@cart, url:carts_path) do |f| %>
 				<div class="form-group">
@@ -42,6 +43,10 @@
 				<%= f.submit 'カートに入れる', class: 'btn btn-primary btn-sm' %>
 				</div>
 				<% end %>
+
+				<% elsif customer_signed_in? && @sweet.is_soldout == "売り切れ" %>
+				sold out
+				<% else %>
 
 				<% end %>
 

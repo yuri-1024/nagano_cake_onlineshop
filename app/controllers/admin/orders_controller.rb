@@ -1,5 +1,7 @@
 class Admin::OrdersController < ApplicationController
 
+	before_action :authenticate_admin!
+
 	def index
 		@path = Rails.application.routes.recognize_path(request.referer)
 		case params[:order_sort]
@@ -12,7 +14,7 @@ class Admin::OrdersController < ApplicationController
 			@orders = @customer.orders
 		else
 			@order_title = "注文履歴一覧"
-			@orders = Order.all.reverse_order
+			@orders = Order.all
 		end
 
 

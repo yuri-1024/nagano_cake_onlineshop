@@ -2,11 +2,9 @@ class Public::SweetsController < ApplicationController
 
 	def top
 		@genre = Genre.all
-		if params[:genre_sort]
-			@sweets = Sweet.where(genre_id: params[:genre_sort])
-		else
-			@sweets = Sweet.all
-		end
+		@sweets = Sweet.last(4)
+
+
 	end
 
 	def about
@@ -16,7 +14,9 @@ class Public::SweetsController < ApplicationController
 		@genres = Genre.all
 		if params[:genre_sort]
 			@sweets = Sweet.where(genre_id: params[:genre_sort])
-			@sweet_index_title = @sweet.genre.name + "一覧"
+			@sweet_index_title = "一覧"
+			@genre = Genre.find(params[:genre_sort])
+			@sweet_index_title = @genre.name + "一覧"
 
 		else
 			@sweet_index_title = "商品一覧"
@@ -28,9 +28,6 @@ class Public::SweetsController < ApplicationController
 		@genre = Genre.all
 		@sweet = Sweet.find(params[:id])
 		@cart = Cart.new
-	end
-
-	def genre
 	end
 
 	private

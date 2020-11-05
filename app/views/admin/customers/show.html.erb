@@ -10,6 +10,12 @@
 		</div>
 		<div class="col-xs-10">
 		  <%= @customer.id %>
+		  <% if @customer.is_deleted == false %>
+		  <%= button_tag( class: 'btn btn-info btn-xs' ) do %>
+		    有効会員
+		  <% end %>
+		  <% end %>
+
 		</div>
 	  </div>
 	  <div class="row">

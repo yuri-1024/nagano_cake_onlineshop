@@ -11,13 +11,13 @@
     </div>
     <div class="col-xs-11">
 
-      <%= link_to(edit_customer_path(@customer)) do %>
+      <%= link_to(profile_edit_path) do %>
       <%= button_tag( class: 'btn btn-primary' ) do %>
       編集する
       <% end %>
       <% end %>
 
-      <%= link_to(edit_customer_password_path) do %>
+      <%= link_to(edit_customer_registration_path(current_customer.id)) do %>
       <%= button_tag( class: 'btn btn-primary' ) do %>
       パスワードを変更する
       <% end %>

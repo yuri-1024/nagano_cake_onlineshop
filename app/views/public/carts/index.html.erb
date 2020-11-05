@@ -28,7 +28,7 @@
 					<td>
 						<%= attachment_image_tag cart.sweet, :image, :fill, 50, 50, format: 'jpeg' %> <%= cart.sweet.name %>
 					</td>
-					<td> <%= (cart.sweet.price * 1.1).floor %> </td>
+					<td> <%= (cart.sweet.price * 1.1).floor %> 円</td>
 					<td>
 						<div class="form-horizontal" role="form">
 						<div class="form-group">
@@ -42,7 +42,7 @@
 					<td>
 						<% sub_total = (cart.sweet.price * cart.amount * 1.1).floor %>
 						<% @sum += sub_total %>
-						<%= sub_total %>
+						<%= sub_total %> 円
 					</td>
 					<td>
 						<%= link_to "削除する", cart_path(cart), method: :delete, class: "btn btn-danger btn-xs" %>
@@ -60,7 +60,7 @@
 				<tr>
 					<th>合計金額</th>
 					<td>
-						<%= @sum %>
+						<%= @sum %> 円
 					</td>
 				</tr>
 			</table>

@@ -1,8 +1,10 @@
 class Public::OrdersController < ApplicationController
 
+	before_action :authenticate_customer!
+
 	def index
 		@path = Rails.application.routes.recognize_path(request.referer)
-		@customer = Customer.find(@path[:id])
+		@customer = current_customer
 		@orders = @customer.orders
 	end
 
@@ -24,9 +26,7 @@ class Public::OrdersController < ApplicationController
 			@order.address = params[:order][:address]
 			@order.name = params[:order][:name]
 		end
-
 	end
-
 
 	def create
 		@order = Order.new(order_params)
@@ -43,6 +43,11 @@ class Public::OrdersController < ApplicationController
 		  end
 		@carts.destroy_all
 		redirect_to complete_path
+	end
+
+	def show
+		@order = Order.find(params[:id])
+		@order_lists = @order.order_lists
 	end
 
 	private

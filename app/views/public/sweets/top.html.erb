@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-lg-3">
-			<table>
+			<table class="table table-bordered">
 				<thead>
 					<tr>
 						<th>ジャンル検索</th>
@@ -22,15 +22,38 @@
 		</div>
 		<div class="col-lg-9">
 			<div class="top_image">
-			  <div class="top_text">
-				<p>ようこそ、NaganoCakeへ！</p>
-				<p>このサイトは、ケーキ販売のECサイトになります。</p>
-				<p>会員でない方も商品の閲覧はできますが、</p>
-				<p>購入には会員登録が必要になります。</p>
+			  <div class="top_suke">
+			  	<div class="top_text">
+			  		<br>
+					<h4><strong>ようこそ、NaganoCakeへ！</strong></h4>
+					<p>このサイトは、ケーキ販売のECサイトになります。</p>
+					<p>会員でない方も商品の閲覧はできますが、</p>
+					<p>購入には会員登録が必要になります。</p>
+			    </div>
 			  </div>
 		    </div>
 		    <h2>オススメ商品</h2>
 
+		    <% @sweets.each do |sweet| %>
+				<table class="col-xs-3">
+					<tbody>
+						<tr>
+							<td>
+								<%= link_to(sweet_path(sweet.id)) do %>
+							     <%= attachment_image_tag sweet, :image, :fill, 150, 150, format: 'jpeg' %>
+							     <% end %>
+						    </td>
+						</tr>
+						<tr>
+							<td><%= sweet.name %></td>
+						</tr>
+						<tr>
+							<td>￥<%= sweet.price %></td>
+						</tr>
+					</tbody>
+				</table>
+			<% end %>
 		    <%= link_to 'もっと見る', sweets_path %>
-
 		</div>
+	</div>
+</div>
