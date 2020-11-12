@@ -1,0 +1,84 @@
+<div class="container">
+  <div class="row">
+	<div class="col-lg-8 col-lg-offset-2">
+	  <h4><%= @customer.name_family %><%= @customer.name_first %>さんの会員詳細</h4>
+	  <br>
+	  <br>
+	  <div class="row">
+	  	<div class="col-xs-2">
+		  <p>顧客ID</p>
+		</div>
+		<div class="col-xs-10">
+		  <%= @customer.id %>
+		  <% if @customer.is_deleted == false %>
+		  <%= button_tag( class: 'btn btn-info btn-xs' ) do %>
+		    有効会員
+		  <% end %>
+		  <% end %>
+
+		</div>
+	  </div>
+	  <div class="row">
+	  	<div class="col-xs-2">
+		  <p>氏名</p>
+		</div>
+		<div class="col-xs-10">
+		  <%= @customer.name_family %><%= @customer.name_first %>
+		</div>
+	  </div>
+	  <div class="row">
+	  	<div class="col-xs-2">
+		  <p>フリガナ</p>
+		</div>
+		<div class="col-xs-10">
+		  <%= @customer.name_family_kana %><%= @customer.name_first_kana %>
+		</div>
+	  </div>
+	  <div class="row">
+	  	<div class="col-xs-2">
+		  <p>郵便番号</p>
+		</div>
+		<div class="col-xs-10">
+		  <%= @customer.postal_code %>
+		</div>
+	  </div>
+	  <div class="row">
+	  	<div class="col-xs-2">
+		  <p>住所</p>
+		</div>
+		<div class="col-xs-10">
+		  <%= @customer.address %>
+		</div>
+	  </div>
+	  <div class="row">
+	  	<div class="col-xs-2">
+		  <p>電話番号</p>
+		</div>
+		<div class="col-xs-10">
+		  <%= @customer.tel %>
+		</div>
+	  </div>
+	  <div class="row">
+	  	<div class="col-xs-2">
+		  <p>メールアドレス</p>
+		</div>
+		<div class="col-xs-10">
+		  <%= @customer.email %>
+		</div>
+	  </div>
+		<br>
+		<br>
+		<%= link_to(edit_admin_customer_path(@customer)) do %>
+		<%= button_tag( class: 'btn btn-info' ) do %>
+		編集する
+		<% end %>
+		<% end %>　
+
+		<%= link_to(admin_orders_path(order_sort: 1)) do %>
+		<%= button_tag( class: 'btn btn-info' ) do %>
+		注文履歴一覧をみる
+		<% end %>
+		<% end %>
+    </div>
+  </div>
+</div>

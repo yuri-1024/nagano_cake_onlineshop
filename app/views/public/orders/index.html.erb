@@ -1,0 +1,33 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			<h4><%= @order_title %></h4>
+			<table class="table table-hover">
+					<tr>
+						<th>購入日時</th>
+						<th>購入者</th>
+						<th>注文個数</th>
+						<th>注文ステータス</th>
+					</tr>
+					<% @orders.each do |order| %>
+					<tr>
+						<td>
+							<%= link_to(order_path(order.id)) do %>
+							<%= order.created_at %>
+							<% end %>
+						</td>
+						<td><%= order.customer.name_family %><%= order.customer.name_first %></td>
+						<td>
+							<% total_amount = 0 %>
+							<% order.order_lists.each do |order_list| %>
+								<% total_amount += order_list.amount %>
+						    <% end %>
+						    <%= total_amount %>
+						</td>
+						<td><%= order.status %></td>
+					</tr>
+					<% end %>
+			</table>
+		</div>
+	</div>
+</div>

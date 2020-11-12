@@ -1,0 +1,46 @@
+<div class="container">
+ <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+	<div class="row">
+	  <div class="col-xs-11">
+		<h4>商品一覧</h4>
+      </div>
+      <div class="col-xs-1">
+		<%= link_to(new_admin_sweet_path) do %>
+		<button type="button" class="btn btn-default btn-circle">
+		＋
+	    </button>
+		<% end %>
+	  </div>
+	</div>
+	<table class="table table-hover">
+		<h1>Users</h1>
+		<thead>
+			<tr>
+				<th>商品ID</th>
+				<th>商品名</th>
+				<th>税抜き価格</th>
+				<th>ジャンル</th>
+				<th>販売ステータス</th>
+
+			</tr>
+		</thead>
+		<tbody>
+			<% @sweets.each do |sweet| %>
+			<tr>
+	        	<td><%= sweet.id %></td>
+	            <td>
+	            	<%= link_to(admin_sweet_path(sweet)) do %>
+	            	<%= sweet.name %>
+	            	<% end %>
+            	</td>
+	            <td><%= sweet.price %></td>
+	            <td><%= sweet.genre.name %></td>
+	            <td><%= sweet.is_soldout %></td>
+	        </tr>
+		    <% end %>
+		</tbody>
+	</table>
+	</div>
+  </div>
+</div>

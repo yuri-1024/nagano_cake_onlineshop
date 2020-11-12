@@ -7,9 +7,151 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
   </head>
 
   <body>
+    <header>
+      <nav class="navbar navbar-inverse">
+        <nav class='navbar-left navbar-brand'>
+          <span><%= image_tag 'logo.png', size: '200x40' %></span>
+        </nav>
+
+          <% if customer_signed_in? %>
+          <nav class='navbar-left navbar-brand' style="color:#fff">
+              ようこそ<%= current_customer.name_family %><%= current_customer.name_first %>さん！
+          </nav>
+          <% end %>
+
+
+
+
+        
+
+        <!-- <div class="nav navbar-nav navbar-right">
+            <li class="nav-item">
+                  <%= link_to(new_admin_session_path) do %>
+                  <%= button_tag( class: 'btn btn-link' ) do %>
+                    管理者login
+                  <% end %>
+                  <% end %>
+            </li> -->
+
+            
+
+          　<% if customer_signed_in? %>
+
+                
+                <li class="nav-item">
+                  <%= link_to(customers_path) do %>
+                  <%= button_tag( class: 'btn btn-link' ) do %>
+                    マイページ
+                  <% end %>
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to(sweets_path) do %>
+                  <%= button_tag( class: 'btn btn-link' ) do %>
+                    商品一覧
+                  <% end %>
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to(carts_path) do %>
+                  <%= button_tag( class: 'btn btn-link' ) do %>
+                    カート
+                  <% end %>
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to destroy_customer_session_path, :method => :delete do %>
+                  <%= button_tag( class: 'btn btn-link' ) do %>
+                  ログアウト
+                  <% end %>
+                  <% end %>
+                </li>
+
+            <% elsif admin_signed_in? %>
+            　　<li class="nav-item">
+                  <%= link_to(admin_sweets_path) do %>
+                  <%= button_tag( class: 'btn btn-link' ) do %>
+                    商品一覧
+                  <% end %>
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to(admin_customers_path) do %>
+                  <%= button_tag( class: 'btn btn-link' ) do %>
+                    会員一覧
+                  <% end %>
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to(admin_orders_path) do %>
+                  <%= button_tag( class: 'btn btn-link' ) do %>
+                    注文履歴一覧
+                  <% end %>
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to(admin_genres_path) do %>
+                  <%= button_tag( class: 'btn btn-link' ) do %>
+                    ジャンル一覧
+                  <% end %>
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to destroy_admin_session_path, :method => :delete do %>
+                    <%= button_tag( class: 'btn btn-link' ) do %>
+                  ログアウト
+                    <% end %>
+                  <% end %>
+                </li>
+
+            <% else %>
+
+                <li class="nav-item">
+                  <%= link_to(about_path) do %>
+                  <%= button_tag( class: 'btn btn-link' ) do %>
+                    About
+                  <% end %>
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to(sweets_path) do %>
+                  <%= button_tag( class: 'btn btn-link' ) do %>
+                    商品一覧
+                  <% end %>
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to(new_customer_registration_path) do %>
+                  <%= button_tag( class: 'btn btn-link' ) do %>
+                    新規登録
+                  <% end %>
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to(new_customer_session_path) do %>
+                  <%= button_tag( class: 'btn btn-link' ) do %>
+                    ログイン
+                  <% end %>
+                  <% end %>
+                </li>
+            <% end %>
+       </div>
+      </nav>
+    </header>
+
     <%= yield %>
+    <br><br><br><br>
+
+    <footer class="footer">
+      <div class="container">
+        <p class="text-muted">
+<!--           <link href="app/assets/stylesheets/footer.css" rel="stylesheet">
+ -->        </p>
+      </div>
+    </footer>
   </body>
 </html>

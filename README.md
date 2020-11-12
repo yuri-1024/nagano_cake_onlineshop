@@ -1,24 +1,30 @@
-# README
+#Nagano_CAKE_OnlineStore
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+*概要
 
-Things you may want to cover:
+長野県にある洋菓子点のオンラインショップアプリケーション
+オンラインプログラミングスクールのECサイト開発の課題
 
-* Ruby version
+*機能
 
-* System dependencies
+「管理者側」
+管理者ログイン
+商品登録
+ジャンル登録
+注文管理
+ユーザー管理
 
-* Configuration
+「ユーザー側」
+ログイン
+商品閲覧
+カート追加
+注文
+ユーザー編集
 
-* Database creation
+*使用言語
 
-* Database initialization
+ruby 2.5.7
 
-* How to run the test suite
+*使用gem
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+device
