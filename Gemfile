@@ -79,3 +79,5 @@ group :production do
   gem 'mysql2'
 end
 
+gem 'ed25519'
+gem 'bcrypt_pbkdf'
